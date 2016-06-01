@@ -29,9 +29,12 @@ public class AerolineaFacade extends AbstractFacade<Aerolinea> {
     public AerolineaFacade() {
         super(Aerolinea.class);
     }
-    
-    public List<Aerolinea> retrieveAerolineaByNombre(String nombre){
-        return (List<Aerolinea>)em.createNamedQuery("Aerolinea.findByNombre").setParameter("nombre", nombre).getResultList();
+
+    public Aerolinea retrieveAerolineaByNombre(String nombre) {
+        return (Aerolinea) em.createNamedQuery("Aerolinea.findByNombre").setParameter("nombre", nombre).getResultList();
     }
-    
+
+    public Aerolinea retrieveAerolineaByID(Integer idAerolinea) {
+        return (Aerolinea) em.createNamedQuery("Aerolinea.findByAerCodigo").setParameter("aerCodigo", idAerolinea).getResultList();
+    }
 }

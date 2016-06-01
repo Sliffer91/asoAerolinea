@@ -17,15 +17,20 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AerolineaController {
+
     @EJB
     private AerolineaFacade facade;
-    
-    public List<Aerolinea> Aerolinea(){
+
+    public List<Aerolinea> Aerolinea() {
         return facade.findAll();
     }
-    
-    public List<Aerolinea> getAerolineas(String nombre){
+
+    public Aerolinea getAerolineas(String nombre) {
         return facade.retrieveAerolineaByNombre(nombre);
     }
-    
+
+    public Aerolinea getAerolineas(Integer idAerolinea) {
+        return facade.retrieveAerolineaByID(idAerolinea);
+    }
+
 }

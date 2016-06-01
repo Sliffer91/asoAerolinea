@@ -17,10 +17,15 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class TransaccionAerolineaController {
+
     @EJB
     private TransaccionAerolineaFacade facade;
-    
-    public List<TransaccionAerolinea> getTransaccionAerolinea(){
+
+    public List<TransaccionAerolinea> getTransaccionAerolinea() {
         return facade.findAll();
+    }
+
+    public void registrarTranAerolinea(TransaccionAerolinea transaccionAerolinea) {
+        facade.create(transaccionAerolinea);
     }
 }

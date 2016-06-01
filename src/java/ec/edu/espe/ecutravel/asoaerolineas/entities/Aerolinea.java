@@ -43,7 +43,7 @@ public class Aerolinea implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "aer_codigo")
-    private BigDecimal aerCodigo;
+    private Integer aerCodigo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -68,22 +68,22 @@ public class Aerolinea implements Serializable {
     public Aerolinea() {
     }
 
-    public Aerolinea(BigDecimal aerCodigo) {
+    public Aerolinea(Integer aerCodigo) {
         this.aerCodigo = aerCodigo;
     }
 
-    public Aerolinea(BigDecimal aerCodigo, String nombre, String telefono, String descripcion) {
+    public Aerolinea(Integer aerCodigo, String nombre, String telefono, String descripcion) {
         this.aerCodigo = aerCodigo;
         this.nombre = nombre;
         this.telefono = telefono;
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getAerCodigo() {
+    public Integer getAerCodigo() {
         return aerCodigo;
     }
 
-    public void setAerCodigo(BigDecimal aerCodigo) {
+    public void setAerCodigo(Integer aerCodigo) {
         this.aerCodigo = aerCodigo;
     }
 

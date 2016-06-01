@@ -42,7 +42,7 @@ public class TransaccionAerolinea implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "tra_codigo")
-    private BigDecimal traCodigo;
+    private Integer traCodigo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "vue_codigo")
@@ -62,21 +62,21 @@ public class TransaccionAerolinea implements Serializable {
     public TransaccionAerolinea() {
     }
 
-    public TransaccionAerolinea(BigDecimal traCodigo) {
+    public TransaccionAerolinea(Integer traCodigo) {
         this.traCodigo = traCodigo;
     }
 
-    public TransaccionAerolinea(BigDecimal traCodigo, BigInteger vueCodigo, BigInteger asiCodigo) {
+    public TransaccionAerolinea(Integer traCodigo, BigInteger vueCodigo, BigInteger asiCodigo) {
         this.traCodigo = traCodigo;
         this.vueCodigo = vueCodigo;
         this.asiCodigo = asiCodigo;
     }
 
-    public BigDecimal getTraCodigo() {
+    public Integer getTraCodigo() {
         return traCodigo;
     }
 
-    public void setTraCodigo(BigDecimal traCodigo) {
+    public void setTraCodigo(Integer traCodigo) {
         this.traCodigo = traCodigo;
     }
 
