@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.ecutravel.asoaerolineas.ws;
 
-import ec.edu.espe.ecutrave.aerolineal.ws.Vuelo;
 import ec.edu.espe.ecutravel.asoaerolineas.consumer.ConsumerAerolinea;
 import ec.edu.espe.ecutravel.asoaerolineas.controllers.AerolineaController;
 import ec.edu.espe.ecutravel.asoaerolineas.controllers.TransaccionAerolineaController;
@@ -36,14 +35,14 @@ public class AsoAerolineasWS {
     }
 
     @WebMethod(operationName = "retrieveVuelo")
-    public List<Vuelo> retrieveVuelo(
+    public List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> retrieveVuelo(
             @WebParam(name = "idAerolinea") Integer idAerolinea,
             @WebParam(name = "inicio") String inicio,
             @WebParam(name = "fin") String fin,
             @WebParam(name = "origen") String origen,
             @WebParam(name = "destino") String destino,
             @WebParam(name = "numper") String numper) {
-        List<Vuelo> temp = new ArrayList<>();
+        List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> temp = new ArrayList<>();
         //temp =consumerAerolinea.retrieveVuelo(inicio, fin, origen, destino, numper);
         temp = consumerAerolinea.retrieveVuelo(idAerolinea, inicio, fin, origen, destino, numper);
         return temp;

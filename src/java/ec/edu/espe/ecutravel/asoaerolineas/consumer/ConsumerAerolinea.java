@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.ecutravel.asoaerolineas.consumer;
 
-import ec.edu.espe.ecutrave.aerolineal.ws.Vuelo;
 import ec.edu.espe.ecutravel.asoaerolineas.controllers.AerolineaController;
 import ec.edu.espe.ecutravel.asoaerolineas.controllers.TransaccionAerolineaController;
 import ec.edu.espe.ecutravel.asoaerolineas.entities.Aerolinea;
@@ -26,21 +25,21 @@ public class ConsumerAerolinea {
     @EJB
     TransaccionAerolineaController transaccionAerolineaController;
 
-    public List<Vuelo> retrieveVuelo(
+    public List<Object> retrieveVuelo(
             String inicio,
             String fin,
             String origen,
             String destino,
             String numper) {
-        List<Vuelo> vuelos = new ArrayList();
-        List<Vuelo> temp2 = aerolinea1consumer.Aerolinea1WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
-        for (Vuelo object : temp2) {
+        List<Object> vuelos = new ArrayList();
+        List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> temp2 = aerolinea1consumer.Aerolinea1WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
+        for (ec.edu.espe.ecutravel.aerolinea.ws.Vuelo object : temp2) {
             if (object.getCiudadOrigen().equals(origen) && object.getCiudadDestino().equals(destino)) {
                 vuelos.add(object);
             }
         }
-        List<Vuelo> temp3 = aerolinea2consumer.Aerolinea2WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
-        for (Vuelo object : temp3) {
+        List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> temp3 = aerolinea2consumer.Aerolinea2WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
+        for (ec.edu.espe.ecutravel.aerolinea.ws.Vuelo object : temp3) {
             if (object.getCiudadOrigen().equals(origen) && object.getCiudadDestino().equals(destino)) {
                 vuelos.add(object);
             }
@@ -48,7 +47,7 @@ public class ConsumerAerolinea {
         return vuelos;
     }
 
-    public List<Vuelo> retrieveVuelo(
+    public List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> retrieveVuelo(
             Integer idAerolinea,
             String inicio,
             String fin,
@@ -57,18 +56,18 @@ public class ConsumerAerolinea {
             String numper) {
         Aerolinea aerolinea = new Aerolinea();
         aerolinea = aerolineaController.getAerolineas(idAerolinea);
-        List<Vuelo> vuelos = new ArrayList();
+        List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> vuelos = new ArrayList();
         if (aerolinea != null) {
             if (aerolinea.getNombre().toUpperCase().equals("AVIANCA")) {
-                List<Vuelo> temp3 = aerolinea2consumer.Aerolinea2WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
-                for (Vuelo object : temp3) {
+                List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> tempAvianca = aerolinea2consumer.Aerolinea2WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
+                for (ec.edu.espe.ecutravel.aerolinea.ws.Vuelo object : tempAvianca) {
                     if (object.getCiudadOrigen().equals(origen) && object.getCiudadDestino().equals(destino)) {
                         vuelos.add(object);
                     }
                 }
             } else if (aerolinea.getNombre().toUpperCase().equals("TAME")) {
-                List<Vuelo> temp2 = aerolinea1consumer.Aerolinea1WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
-                for (Vuelo object : temp2) {
+                List<ec.edu.espe.ecutravel.aerolinea.ws.Vuelo> tempTame = aerolinea1consumer.Aerolinea1WSConsumer.retrieveVuelosByPara(inicio, fin, origen, destino, numper);
+                for (ec.edu.espe.ecutravel.aerolinea.ws.Vuelo object : tempTame) {
                     if (object.getCiudadOrigen().equals(origen) && object.getCiudadDestino().equals(destino)) {
                         vuelos.add(object);
                     }
